@@ -37,8 +37,11 @@ class ResourcesXmlWriter(xmlFile: File, xmlLines: List<XmlLine>) {
 
     fun addUpdateToKey(key: String, value: String, note: String?) {
         val entry = originals[key]!!
+        val originalValue = entry.value
+                // Remove bold tags
+                .replace(Regex("(\\<b\\>)|(\\<\\/b\\>)"), "")
 
-        if (entry.value != value) {
+        if (originalValue != value) {
             entry.addUpdate(key, value, note)
         }
     }

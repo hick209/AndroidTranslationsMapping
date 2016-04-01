@@ -77,6 +77,11 @@ class ResourcesXmlProcessor(xmlFile: File) {
                         index = value.indexOf("%@")
                     }
 
+                    // Update special characters
+                    value = value
+                            .replace("--", "—")
+                            .replace("...", "…")
+
                     val xmlLine = XmlLine(currentLine - 1, matchResult.groupValues[1], value)
                     results.add(xmlLine)
                 }
