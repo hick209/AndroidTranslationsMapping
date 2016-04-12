@@ -81,6 +81,7 @@ class ResourcesXmlProcessor(xmlFile: File) {
                     value = value
                             .replace("--", "—")
                             .replace("...", "…")
+                            .replace("’", "\\'")
 
                     val xmlLine = XmlLine(currentLine - 1, matchResult.groupValues[1], value)
                     results.add(xmlLine)
